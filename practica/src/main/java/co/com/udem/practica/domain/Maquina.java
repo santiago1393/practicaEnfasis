@@ -16,10 +16,9 @@ public class Maquina {
 	private double descuento;
 	private String imagen;
 	
-	
-	
-	
+		
 	/**
+	 * @param id
 	 * @param nombre
 	 * @param descripcion
 	 * @param disponibilidad
@@ -27,15 +26,26 @@ public class Maquina {
 	 * @param descuento
 	 * @param imagen
 	 */
-	public Maquina(String nombre, String descripcion, boolean disponibilidad,
-			double precio, double descuento, String imagen) {
+	
+	
+	
+	public Maquina(Long id, String nombre, String descripcion,
+			boolean disponibilidad, double precio, double descuento,
+			String imagen) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.disponibilidad = disponibilidad;
 		this.precio = precio;
 		this.descuento = descuento;
 		this.imagen = imagen;
+	}
+	/**
+	 * 
+	 */
+	public Maquina() {
+		super();
 	}
 	/**
 	 * @return the id

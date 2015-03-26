@@ -42,15 +42,12 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 
 	public List<Maquina> metodoList() {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("FROM Moviee");
+		Query query = session.createQuery("FROM Maquina");
 		
 		@SuppressWarnings("unchecked")
-		List<Maquina> listMovies = (List<Maquina>) query.list();
-		
-		System.out.println(listMovies.get(0).getNombre());
-		
-		
-		return listMovies;
+		List<Maquina> listMaquinas = (List<Maquina>) query.list();		
+		System.out.println(listMaquinas.get(0).getNombre());		
+		return listMaquinas;
 	
 	}
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.com.udem.practica.DAO.MaquinaDAO;
@@ -14,6 +15,7 @@ import co.com.udem.practica.domain.Maquina;
 @Service
 public class MaquinaServiceImpl implements MaquinaService {
 
+	@Autowired
 	private MaquinaDAO maquinaDAO;
 	
 	
@@ -39,12 +41,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 
 	@Transactional
 	public List<Maquina> metodoList() {
-	List<Maquina> maquinas = maquinaDAO.metodoList();
-		
-		for (Maquina maquina : maquinas) {
-			maquina.setNombre(maquina.getNombre() + "2");
-		}
-		
+		List<Maquina> maquinas = maquinaDAO.metodoList();
 		return maquinas;
 	}
 

@@ -23,9 +23,9 @@ public class MaquinasController {
 	@RequestMapping("/list")
 	public ModelAndView MoviesList(@RequestParam(value = "name", required = false, defaultValue = "HOMECENTER") String name){
 		
-		List<Maquina> movies = maquinaService.metodoList();
+		List<Maquina> maquinas = maquinaService.metodoList();
 		ModelAndView mv = new ModelAndView();
-	//	mv.addObject("movies", movies);
+		mv.addObject("maquinas", maquinas);
 		mv.addObject("name", name);
 		return mv;
 	}

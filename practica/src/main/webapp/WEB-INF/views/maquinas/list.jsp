@@ -11,6 +11,15 @@
 	<h2 class="col-md-12">Hello ${name}</h2>
 </head>
 <body>
+<table class="table table-striped">		
+		<c:forEach var = "item" items="${maquinas}">
+			<tr>
+				<td>
+					${item.nombre}
+				</td>			
+			</tr>
+		</c:forEach>
+	</table>
 
 </body>
 </html>
