@@ -5,8 +5,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+
 
 
 import co.com.udem.practica.DAO.MaquinaDAO;
@@ -20,14 +23,24 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 	
 
 
-	public boolean metodoCreate() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean metodoCreate( Maquina maquina) {
+		Session session = sessionFactory.getCurrentSession();		
+		session.save(maquina);
+		session.flush();
+		return true;
 	}
 
 	public Maquina metodoRead(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Maquina maquina = (Maquina) session.get(Maquina.class, id);
+		if(maquina != null)
+		{
+			return maquina;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public boolean metodoUpdate() {
@@ -35,9 +48,21 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		return false;
 	}
 
-	public boolean metodoDelete() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean metodoDelete(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		Maquina maquina = (Maquina) session.get(Maquina.class, id);
+		if(maquina != null)
+		{
+			session.delete(maquina);
+			session.flush();		
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+		
 	}
 
 	public List<Maquina> metodoList() {

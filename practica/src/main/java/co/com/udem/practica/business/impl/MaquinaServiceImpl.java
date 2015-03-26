@@ -18,25 +18,28 @@ public class MaquinaServiceImpl implements MaquinaService {
 	@Autowired
 	private MaquinaDAO maquinaDAO;
 	
-	
-	public boolean metodoCreate() {
-		// TODO Auto-generated method stub
-		return false;
+	@Transactional
+	public boolean metodoCreate( Maquina maquina) {
+		return maquinaDAO.metodoCreate(maquina);
+		
 	}
 
+	@Transactional
 	public Maquina metodoRead(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Maquina maquina = maquinaDAO.metodoRead(id);
+		return maquina;
 	}
 
+	@Transactional
 	public boolean metodoUpdate() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	public boolean metodoDelete() {
-		// TODO Auto-generated method stub
-		return false;
+	
+	@Transactional
+	public boolean metodoDelete(Long id) {
+		return maquinaDAO.metodoDelete(id);
+		
 	}
 
 	@Transactional

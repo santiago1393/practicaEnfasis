@@ -1,6 +1,8 @@
 package co.com.udem.practica.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -8,6 +10,7 @@ public class Maquina {
 	
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nombre;
 	private String descripcion;
@@ -29,11 +32,10 @@ public class Maquina {
 	
 	
 	
-	public Maquina(Long id, String nombre, String descripcion,
+	public Maquina( String nombre, String descripcion,
 			boolean disponibilidad, double precio, double descuento,
 			String imagen) {
-		super();
-		this.id = id;
+		super();		
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.disponibilidad = disponibilidad;

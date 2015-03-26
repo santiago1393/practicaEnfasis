@@ -6,10 +6,10 @@ import co.com.udem.practica.domain.Maquina;
 
 public interface MaquinaService {
 	
-	public boolean metodoCreate();
+	public boolean metodoCreate( Maquina maquina);
 	public Maquina metodoRead(Long id);
 	public boolean metodoUpdate();
-	public boolean metodoDelete();
+	public boolean metodoDelete(Long id);
 	public List<Maquina> metodoList();
 
 }
