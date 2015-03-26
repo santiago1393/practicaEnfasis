@@ -17,8 +17,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title> ${name}</title>	
 </head>
-<body>
-<table class="table table-bordered">
+<body class="alert">
+<table class="table table-bordered text-center">
 		<tr>
 			<th>NOMBRE </th>			
 			<th>IMAGEN </th>
@@ -39,7 +39,8 @@
 					${item.precio}
 				</td>
 					<td>
-				<input type="button" value="Ver Detalle" onclick="location.href='detalle?id=${item.id}';"/>
+					<button class="btn btn-info" onclick="location.href='detalle?id=${item.id}';">Ver Detalle</button>
+			
 				</td>								
 			</tr>
 		</c:forEach>
