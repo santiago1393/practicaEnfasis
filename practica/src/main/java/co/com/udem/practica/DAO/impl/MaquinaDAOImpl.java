@@ -48,9 +48,17 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		return maquina;
 	}
 
-	public boolean metodoUpdate(Long id) {
-		Session session = sessionFactory.getCurrentSession();
-		return false;
+	public boolean metodoUpdate(Maquina maquina) {
+		boolean retorno = false;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			session.update(maquina);
+			session.flush();
+			retorno = true;
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return retorno;
 	}
 
 	public boolean metodoDelete(Long id) {

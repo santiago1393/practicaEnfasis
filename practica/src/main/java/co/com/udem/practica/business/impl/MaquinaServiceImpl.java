@@ -31,7 +31,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 	}
 
 	@Transactional
-	public boolean metodoUpdate(Long id) {
+	public boolean metodoUpdate(Maquina maquina) {
 		// TODO Auto-generated method stub
 		return false;
 	}

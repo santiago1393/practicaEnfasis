@@ -9,7 +9,7 @@ public interface MaquinaDAO {
 	
 	public boolean metodoCreate( Maquina maquina);
 	public Maquina metodoRead(Long id);
-	public boolean metodoUpdate(Long id);
+	public boolean metodoUpdate(Maquina maquina);
 	public boolean metodoDelete(Long id);
 	public List<Maquina> metodoList();
 

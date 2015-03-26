@@ -46,7 +46,9 @@ public class MaquinasController {
 	}
 	
 	@RequestMapping("/update")
-	public @ResponseBody boolean MaquinaUpdate(@RequestParam(value="id", required = false, defaultValue = "0") Long id){
-		return maquinaService.metodoUpdate(id);
+	public @ResponseBody boolean MaquinaUpdate(@RequestParam(value = "id", required = false, defaultValue = "0") Long id, @RequestParam(value = "nombre", required = false, defaultValue = "HOMECENTER") String nombre,@RequestParam(value = "descripcion", required = false, defaultValue = "HOMECENTER") String descripcion, @RequestParam(value = "precio", required = false, defaultValue = "0") double precio, @RequestParam(value = "descuento", required = false, defaultValue = "0") double descuento,@RequestParam(value = "disponibilidad", required = false, defaultValue = "true") boolean disponibilidad){
+		Maquina maquina = new Maquina(nombre,descripcion,disponibilidad,precio,descuento,"");
+		maquina.setId(id);
+		return  maquinaService.metodoUpdate(maquina);
 	}
 }
