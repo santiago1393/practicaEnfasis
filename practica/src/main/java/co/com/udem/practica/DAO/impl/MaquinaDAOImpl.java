@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 import co.com.udem.practica.DAO.MaquinaDAO;
 import co.com.udem.practica.domain.Maquina;
 
@@ -24,56 +25,62 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 
 
 	public boolean metodoCreate( Maquina maquina) {
-		Session session = sessionFactory.getCurrentSession();		
-		session.save(maquina);
-		session.flush();
-		return true;
+		boolean retorno = false;
+		try {
+			Session session = sessionFactory.getCurrentSession();		
+			session.save(maquina);
+			session.flush();
+			retorno = true;
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return retorno;
 	}
 
 	public Maquina metodoRead(Long id) {
-		Session session = sessionFactory.getCurrentSession();
-		Maquina maquina = (Maquina) session.get(Maquina.class, id);
-		if(maquina != null)
-		{
-			return maquina;
+		Maquina maquina = null;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			maquina = (Maquina) session.get(Maquina.class, id);
+		} catch (Exception e) {
+			e.getMessage();
 		}
-		else
-		{
-			return null;
-		}
+		return maquina;
 	}
 
-	public boolean metodoUpdate() {
-		// TODO Auto-generated method stub
+	public boolean metodoUpdate(Long id) {
+		Session session = sessionFactory.getCurrentSession();
 		return false;
 	}
 
 	public boolean metodoDelete(Long id) {
-		Session session = sessionFactory.getCurrentSession();
-		Maquina maquina = (Maquina) session.get(Maquina.class, id);
-		if(maquina != null)
-		{
+		boolean retorno = false;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Maquina maquina = (Maquina) session.get(Maquina.class, id);
 			session.delete(maquina);
-			session.flush();		
-			return true;
+			session.flush();
+			retorno = true;
+		} catch (Exception e) {
+			e.getMessage();
 		}
-		else
-		{
-			return false;
-		}
-		
-		
+		return retorno;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Maquina> metodoList() {
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("FROM Maquina");
-		
-		@SuppressWarnings("unchecked")
-		List<Maquina> listMaquinas = (List<Maquina>) query.list();		
-		System.out.println(listMaquinas.get(0).getNombre());		
+		List<Maquina> listMaquinas = null;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Query query = session.createQuery("FROM Maquina");
+			
+			
+			listMaquinas = (List<Maquina>) query.list();		
+			System.out.println(listMaquinas.get(0).getNombre());
+		} catch (Exception e) {
+			e.getMessage();
+		}	
 		return listMaquinas;
-	
 	}
 
 }

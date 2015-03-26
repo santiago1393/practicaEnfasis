@@ -42,7 +42,11 @@ public class MaquinasController {
 	
 	@RequestMapping("/read")
 	public @ResponseBody Maquina MaquinaRead(@RequestParam(value = "id", required = false, defaultValue = "0") Long id){
-		return  maquinaService.metodoRead(id);
+		return maquinaService.metodoRead(id);	
+	}
 	
+	@RequestMapping("/update")
+	public @ResponseBody boolean MaquinaUpdate(@RequestParam(value="id", required = false, defaultValue = "0") Long id){
+		return maquinaService.metodoUpdate(id);
 	}
 }
