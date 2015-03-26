@@ -19,7 +19,7 @@
     <!-- Service definition -->
     <context:annotation-config/>
     <!-- Scans the classpath of this application for @Components to deploy as beans -->
-    <context:component-scan base-package="co.com.udem.practica1"/>
+    <context:component-scan base-package="co.com.udem.practica"/>
     
     <bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -33,7 +33,7 @@
 	
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-	    <property name="url" value="jdbc:mysql://127.0.0.1:3306/udem"/>
+	    <property name="url" value="jdbc:mysql://127.0.0.1:3306/practica1"/>
 	    <property name="username" value="root"/>
 	    <property name="password" value="root"/>
 	    <property name="validationQuery" value="SELECT 1"/>
@@ -49,7 +49,7 @@
 		</property>
 		<property name="packagesToScan">
 			<array>
-				<value>co.com.udem.practica1</value>
+				<value>co.com.udem.practica</value>
 			</array>
 		</property>
 	</bean>
