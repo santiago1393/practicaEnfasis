@@ -31,9 +31,8 @@ public class MaquinaServiceImpl implements MaquinaService {
 	}
 
 	@Transactional
-	public boolean metodoUpdate(Maquina maquina) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean metodoUpdate(Maquina maquina) {		
+		return maquinaDAO.metodoUpdate(maquina);
 	}
 	
 	@Transactional

@@ -7,9 +7,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title> ${name}</title>	
 </head>
 <body>
+
+<table class="table table-bordered">
+		<tr>
+			<th>NOMBRE </th>			
+			<th>IMAGEN </th>
+			<th>PRECIO </th>
+			
+			
+		
+		</tr>		
+		
+			<tr>
+				<td>
+					${maquina.nombre}					
+				</td>
+				<td>
+					<img alt="" src="img/${maquina.imagen}">
+				</td>
+				<td>
+					${maquina.precio}
+				</td>
+										
+			</tr>
+	
+	</table>
+
+</body>
 
 </body>
 </html>
