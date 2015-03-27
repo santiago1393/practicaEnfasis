@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.codehaus.jackson.JsonGenerator;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.io.JsonStringEncoder;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ser.impl.JsonSerializerMap;
+import org.codehaus.jackson.util.JsonParserDelegate;
+import org.codehaus.jackson.util.JsonParserSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,7 +71,7 @@ public class MaquinasController {
 		List<Maquina> listaMaquinas = MaquinaList();	
 		for (Maquina maquina : listaMaquinas) {
 			maquina.setNombre(maquina.getNombre().toUpperCase());
-			maquina.setDescripcion(maquina.getDescripcion().toUpperCase());		
+			maquina.setDescripcion(maquina.getDescripcion());		
 		}
 		mv.addObject("name","Lista de Maquinas");
 		mv.addObject("lista",listaMaquinas);

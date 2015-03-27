@@ -2,12 +2,14 @@ package co.com.udem.practica.DAO.impl;
 
 import java.util.List;
 
+import org.codehaus.jackson.map.util.JSONPObject;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 
 
@@ -34,7 +36,7 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "status:"+retorno;
+		return "[{status:"+retorno+"}]";
 	}
 
 	public Maquina metodoRead(Long id) {
@@ -58,7 +60,7 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "status:"+retorno;
+		return "[{status:"+retorno+"}]";
 	}
 
 	public String metodoDelete(Long id) {
@@ -72,7 +74,7 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "status:"+retorno;
+		return "[{status:"+retorno+"}]";
 	}
 
 	@SuppressWarnings("unchecked")

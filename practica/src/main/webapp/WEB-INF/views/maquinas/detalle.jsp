@@ -18,37 +18,19 @@
 <title> ${name}</title>	
 </head>
 <body class="alert">
-
-<table class="table table-bordered">
-		<tr>
-			<th class="text-center col-md-3">NOMBRE </th>			
-			<th class="text-center col-md-3">IMAGEN </th>
-			<th class="text-center col-md-3">PRECIO </th>
-			<th class="text-center col-md-3">DESCRIPCION </th>
-			<th class="text-center col-md-3">PRECIO CON DESCUENTO</th>
-			<th class="text-center col-md-3">DESCUENTO </th>
-		
-		</tr>		
-		
+<h2>Detalle: </h2>
+<table class="table table-hover">	
 			<tr>
-				<td>
-					${maquina.nombre}					
+				<td class="col-md-6" align = "center">
+					<img height ="350" width="350" alt="" src="../img/${maquina.imagen}">
 				</td>
-				<td>
-					<img alt="" src="../img/${maquina.imagen}">
-				</td>
-				<td>
-					${maquina.precio}
-				</td>
-				<td>
-					${maquina.descripcion}
-				</td>
-				<td>
-					${maquina.precioDescuento}
-				</td>
-				<td>
-					${maquina.descuento}
-				</td>						
+				<td class="col-md-6">
+					<div><label class="alert alert-success">${maquina.nombre}</label></div>			
+					<div><label class="alert alert-info">Precio en la lista: ${maquina.precio}</label></div>
+					<div><label class="alert alert-danger">Precio: ${maquina.precioDescuento}</label></div>
+					<div><label class="alert alert-warning"> Descuento: ${maquina.descuento*100}%</label></div>
+					<div>${maquina.descripcion}</div>
+				</td>					
 			</tr>
 	
 	</table>

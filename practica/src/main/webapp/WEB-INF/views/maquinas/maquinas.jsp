@@ -18,28 +18,20 @@
 <title> ${name}</title>	
 </head>
 <body class="alert">
-<table class="table table-bordered text-center">
-		<tr>
-			<th class="text-center col-md-3">NOMBRE </th>			
-			<th class="text-center col-md-3">IMAGEN </th>
-			<th class="text-center col-md-3">PRECIO </th>
-			<th class="text-center col-md-3">VER DETALLE</th>
-			
-		
-		</tr>		
+	<h2>Lista: </h2>
+<table class="table table-hover text-center">	
 		<c:forEach var = "item" items="${lista}">
 			<tr>
-				<td>
-					${item.nombre}					
-				</td>
-				<td>
+				<td class="col-md-3">
 					<img alt="" src="../img/${item.imagen}">
 				</td>
-				<td>
-					${item.precio}
+				<td class="col-md-5 text-left">
+					<div><label class="alert alert-info">${item.nombre}</label></div>
+					<div><label class="alert alert-danger">${item.precio}</label></div>
+					<div>${item.descripcion}</div>					
 				</td>
-					<td>
-					<button class="btn btn-info" onclick="location.href='detalle?id=${item.id}';">Ver Detalle</button>
+				<td class="col-md-4">
+					<button class="btn btn-warning"  onclick="location.href='detalle?id=${item.id}';">Ver Detalle</button>
 			
 				</td>								
 			</tr>
