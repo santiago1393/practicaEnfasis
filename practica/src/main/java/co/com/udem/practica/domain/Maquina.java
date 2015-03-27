@@ -18,8 +18,21 @@ public class Maquina {
 	private double precio;
 	private double descuento;
 	private String imagen;
+	private double precioDescuento;
 	
 		
+	/**
+	 * @return the precioDescuento
+	 */
+	public double getPrecioDescuento() {
+		return precioDescuento;
+	}
+	/**
+	 * @param precioDescuento the precioDescuento to set
+	 */
+	public void setPrecioDescuento(double precioDescuento) {
+		this.precioDescuento = precioDescuento;
+	}
 	/**
 	 * @param id
 	 * @param nombre

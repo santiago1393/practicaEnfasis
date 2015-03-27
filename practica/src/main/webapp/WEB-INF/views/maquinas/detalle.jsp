@@ -25,6 +25,7 @@
 			<th class="text-center col-md-3">IMAGEN </th>
 			<th class="text-center col-md-3">PRECIO </th>
 			<th class="text-center col-md-3">DESCRIPCION </th>
+			<th class="text-center col-md-3">PRECIO CON DESCUENTO</th>
 			<th class="text-center col-md-3">DESCUENTO </th>
 		
 		</tr>		
@@ -43,7 +44,10 @@
 					${maquina.descripcion}
 				</td>
 				<td>
-					${maquina.descuento}%
+					${maquina.precioDescuento}
+				</td>
+				<td>
+					${maquina.descuento}
 				</td>						
 			</tr>
 	

@@ -34,7 +34,7 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return retorno;
+		return "status:"+retorno;
 	}
 
 	public Maquina metodoRead(Long id) {
@@ -58,7 +58,7 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return retorno;
+		return "status:"+retorno;
 	}
 
 	public String metodoDelete(Long id) {
@@ -72,7 +72,7 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return retorno;
+		return "status:"+retorno;
 	}
 
 	@SuppressWarnings("unchecked")

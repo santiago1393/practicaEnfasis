@@ -45,7 +45,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 	public List<Maquina> metodoList() {
 		List<Maquina> maquinas = maquinaDAO.metodoList();
 		for (Maquina maquina : maquinas) {
-			maquina.setDescuento(maquina.getDescuento()*100);
+			maquina.setPrecioDescuento(maquina.getPrecio() - (maquina.getPrecio()*maquina.getDescuento()));
 		}
 		return maquinas;
 	}
