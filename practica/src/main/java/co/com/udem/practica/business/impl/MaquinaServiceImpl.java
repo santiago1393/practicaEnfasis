@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.com.udem.practica.DAO.MaquinaDAO;
+import co.com.udem.practica.DTO.EstadoRespuesta;
 import co.com.udem.practica.business.MaquinaService;
 import co.com.udem.practica.domain.Maquina;
 
@@ -19,7 +20,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 	private MaquinaDAO maquinaDAO;
 	
 	@Transactional
-	public String metodoCreate( Maquina maquina) {
+	public EstadoRespuesta metodoCreate( Maquina maquina) {
 		return maquinaDAO.metodoCreate(maquina);
 		
 	}
@@ -31,12 +32,12 @@ public class MaquinaServiceImpl implements MaquinaService {
 	}
 
 	@Transactional
-	public String metodoUpdate(Maquina maquina) {		
+	public EstadoRespuesta metodoUpdate(Maquina maquina) {		
 		return maquinaDAO.metodoUpdate(maquina);
 	}
 	
 	@Transactional
-	public String metodoDelete(Long id) {
+	public EstadoRespuesta metodoDelete(Long id) {
 		return maquinaDAO.metodoDelete(id);
 		
 	}

@@ -15,7 +15,9 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 import co.com.udem.practica.DAO.MaquinaDAO;
+import co.com.udem.practica.DTO.EstadoRespuesta;
 import co.com.udem.practica.domain.Maquina;
 
 @Repository
@@ -26,17 +28,17 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 	
 
 
-	public String metodoCreate( Maquina maquina) {
-		String retorno = "error";
+	public EstadoRespuesta metodoCreate( Maquina maquina) {
+		EstadoRespuesta respuesta = new EstadoRespuesta("error");
 		try {
 			Session session = sessionFactory.getCurrentSession();		
 			session.save(maquina);
 			session.flush();
-			retorno = "success";
+			respuesta.setStatus("success");
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "[{status:"+retorno+"}]";
+		return respuesta;
 	}
 
 	public Maquina metodoRead(Long id) {
@@ -50,31 +52,31 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		return maquina;
 	}
 
-	public String metodoUpdate(Maquina maquina) {
-		String retorno = "error";
+	public EstadoRespuesta metodoUpdate(Maquina maquina) {
+		EstadoRespuesta respuesta = new EstadoRespuesta("error");
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			session.update(maquina);
 			session.flush();
-			retorno = "success";
+			respuesta.setStatus("success");
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "[{status:"+retorno+"}]";
+		return respuesta;
 	}
 
-	public String metodoDelete(Long id) {
-		String retorno = "error";
+	public EstadoRespuesta metodoDelete(Long id) {
+		EstadoRespuesta respuesta = new EstadoRespuesta("error");
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			Maquina maquina = (Maquina) session.get(Maquina.class, id);
 			session.delete(maquina);
 			session.flush();
-			retorno = "success";
+			respuesta.setStatus("succes");
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "[{status:"+retorno+"}]";
+		return respuesta;
 	}
 
 	@SuppressWarnings("unchecked")
