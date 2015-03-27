@@ -20,10 +20,10 @@
 <body class="alert">
 <table class="table table-bordered text-center">
 		<tr>
-			<th>NOMBRE </th>			
-			<th>IMAGEN </th>
-			<th>PRECIO </th>
-			<th>VER DETALLE</th>
+			<th class="text-center col-md-3">NOMBRE </th>			
+			<th class="text-center col-md-3">IMAGEN </th>
+			<th class="text-center col-md-3">PRECIO </th>
+			<th class="text-center col-md-3">VER DETALLE</th>
 			
 		
 		</tr>		
@@ -33,7 +33,7 @@
 					${item.nombre}					
 				</td>
 				<td>
-					<img alt="" src="img/${item.imagen}">
+					<img alt="" src="../img/${item.imagen}">
 				</td>
 				<td>
 					${item.precio}

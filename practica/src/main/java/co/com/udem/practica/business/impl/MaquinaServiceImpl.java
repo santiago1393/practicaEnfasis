@@ -19,7 +19,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 	private MaquinaDAO maquinaDAO;
 	
 	@Transactional
-	public boolean metodoCreate( Maquina maquina) {
+	public String metodoCreate( Maquina maquina) {
 		return maquinaDAO.metodoCreate(maquina);
 		
 	}
@@ -31,12 +31,12 @@ public class MaquinaServiceImpl implements MaquinaService {
 	}
 
 	@Transactional
-	public boolean metodoUpdate(Maquina maquina) {		
+	public String metodoUpdate(Maquina maquina) {		
 		return maquinaDAO.metodoUpdate(maquina);
 	}
 	
 	@Transactional
-	public boolean metodoDelete(Long id) {
+	public String metodoDelete(Long id) {
 		return maquinaDAO.metodoDelete(id);
 		
 	}
@@ -44,6 +44,9 @@ public class MaquinaServiceImpl implements MaquinaService {
 	@Transactional
 	public List<Maquina> metodoList() {
 		List<Maquina> maquinas = maquinaDAO.metodoList();
+		for (Maquina maquina : maquinas) {
+			maquina.setDescuento(maquina.getDescuento()*100);
+		}
 		return maquinas;
 	}
 

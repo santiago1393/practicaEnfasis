@@ -24,13 +24,13 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 	
 
 
-	public boolean metodoCreate( Maquina maquina) {
-		boolean retorno = false;
+	public String metodoCreate( Maquina maquina) {
+		String retorno = "error";
 		try {
 			Session session = sessionFactory.getCurrentSession();		
 			session.save(maquina);
 			session.flush();
-			retorno = true;
+			retorno = "success";
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -48,27 +48,27 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		return maquina;
 	}
 
-	public boolean metodoUpdate(Maquina maquina) {
-		boolean retorno = false;
+	public String metodoUpdate(Maquina maquina) {
+		String retorno = "error";
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			session.update(maquina);
 			session.flush();
-			retorno = true;
+			retorno = "success";
 		} catch (Exception e) {
 			e.getMessage();
 		}
 		return retorno;
 	}
 
-	public boolean metodoDelete(Long id) {
-		boolean retorno = false;
+	public String metodoDelete(Long id) {
+		String retorno = "error";
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			Maquina maquina = (Maquina) session.get(Maquina.class, id);
 			session.delete(maquina);
 			session.flush();
-			retorno = true;
+			retorno = "success";
 		} catch (Exception e) {
 			e.getMessage();
 		}

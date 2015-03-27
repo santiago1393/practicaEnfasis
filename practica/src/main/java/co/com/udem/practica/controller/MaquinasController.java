@@ -32,13 +32,13 @@ public class MaquinasController {
 	}
 	
 	@RequestMapping("/create")
-	public @ResponseBody boolean MaquinaCreate(@RequestParam(value = "nombre", required = false, defaultValue = "HOMECENTER") String nombre,@RequestParam(value = "descripcion", required = false, defaultValue = "HOMECENTER") String descripcion, @RequestParam(value = "precio", required = false, defaultValue = "0") double precio, @RequestParam(value = "descuento", required = false, defaultValue = "0") double descuento,@RequestParam(value = "disponibilidad", required = false, defaultValue = "true") boolean disponibilidad){
+	public @ResponseBody String MaquinaCreate(@RequestParam(value = "nombre", required = false, defaultValue = "HOMECENTER") String nombre,@RequestParam(value = "descripcion", required = false, defaultValue = "HOMECENTER") String descripcion, @RequestParam(value = "precio", required = false, defaultValue = "0") double precio, @RequestParam(value = "descuento", required = false, defaultValue = "0") double descuento,@RequestParam(value = "disponibilidad", required = false, defaultValue = "true") boolean disponibilidad){
 		return  maquinaService.metodoCreate(new Maquina(nombre,descripcion,disponibilidad,precio,descuento,""));
 	
 	}
 	
 	@RequestMapping("/delete")
-	public @ResponseBody boolean MaquinaDelete(@RequestParam(value = "id", required = false, defaultValue = "0") Long id){
+	public @ResponseBody String MaquinaDelete(@RequestParam(value = "id", required = false, defaultValue = "0") Long id){
 		return  maquinaService.metodoDelete(id);
 	
 	}
@@ -49,10 +49,10 @@ public class MaquinasController {
 	}
 	
 	@RequestMapping("/update")
-	public @ResponseBody Boolean MaquinaUpdate(@RequestParam(value = "id", required = false, defaultValue = "0") Long id, @RequestParam(value = "nombre", required = false, defaultValue = "HOMECENTER") String nombre,@RequestParam(value = "descripcion", required = false, defaultValue = "HOMECENTER") String descripcion, @RequestParam(value = "precio", required = false, defaultValue = "0") double precio, @RequestParam(value = "descuento", required = false, defaultValue = "0") double descuento,@RequestParam(value = "disponibilidad", required = false, defaultValue = "true") boolean disponibilidad){
+	public @ResponseBody String MaquinaUpdate(@RequestParam(value = "id", required = false, defaultValue = "0") Long id, @RequestParam(value = "nombre", required = false, defaultValue = "HOMECENTER") String nombre,@RequestParam(value = "descripcion", required = false, defaultValue = "HOMECENTER") String descripcion, @RequestParam(value = "precio", required = false, defaultValue = "0") double precio, @RequestParam(value = "descuento", required = false, defaultValue = "0") double descuento,@RequestParam(value = "disponibilidad", required = false, defaultValue = "true") boolean disponibilidad){
 		Maquina maquina = new Maquina(nombre,descripcion,disponibilidad,precio,descuento,"");
 		maquina.setId(id);
-		Boolean respuesta = new Boolean(maquinaService.metodoUpdate(maquina));
+		String respuesta = maquinaService.metodoUpdate(maquina);
 		return respuesta;
 	}
 
