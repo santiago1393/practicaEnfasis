@@ -85,7 +85,7 @@ public class MaquinasController {
 		EstadoRespuesta respuesta = MaquinaRead(id);
 		
 		mv.addObject("name","Detalle de Maquinas");
-		mv.addObject("maquina",respuesta.getResponse());
+		mv.addObject("maquina",respuesta.getResponse().get(0));
 		
 		return mv;
 	}
