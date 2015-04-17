@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.com.udem.practica.DTO.EstadoRespuesta;
+import co.com.udem.practica.DTO.MaquinaDTO;
 import co.com.udem.practica.business.MaquinaService;
 import co.com.udem.practica.domain.Maquina;
 
@@ -32,10 +33,10 @@ public class MaquinasController {
 	public MaquinaService maquinaService;
 	
 	@RequestMapping("/list")
-	public @ResponseBody List<Maquina> MaquinaList(){
+	public @ResponseBody EstadoRespuesta MaquinaList(){
 		
-		List<Maquina> maquinas = maquinaService.metodoList();
-		return maquinas;
+		EstadoRespuesta respuesta = maquinaService.metodoList();
+		return respuesta;
 	}
 	
 	@RequestMapping("/create")
@@ -51,7 +52,7 @@ public class MaquinasController {
 	}
 	
 	@RequestMapping("/read")
-	public @ResponseBody Maquina MaquinaRead(@RequestParam(value = "id", required = false, defaultValue = "0") Long id){
+	public @ResponseBody EstadoRespuesta MaquinaRead(@RequestParam(value = "id", required = false, defaultValue = "0") Long id){
 		return maquinaService.metodoRead(id);	
 	}
 	
@@ -69,13 +70,9 @@ public class MaquinasController {
 	public ModelAndView getMaquinasList()
 	{
 		ModelAndView mv = new ModelAndView();
-		List<Maquina> listaMaquinas = MaquinaList();	
-		for (Maquina maquina : listaMaquinas) {
-			maquina.setNombre(maquina.getNombre().toUpperCase());
-			maquina.setDescripcion(maquina.getDescripcion());		
-		}
+		EstadoRespuesta respuesta = MaquinaList();		
 		mv.addObject("name","Lista de Maquinas");
-		mv.addObject("lista",listaMaquinas);
+		mv.addObject("lista",respuesta.getResponse());
 		
 		return mv;
 	}
@@ -85,10 +82,10 @@ public class MaquinasController {
 	public ModelAndView getMaquinaDetalle(@RequestParam(value = "id", required = false, defaultValue = "1") Long id)
 	{
 		ModelAndView mv = new ModelAndView();
-		Maquina maquina = MaquinaRead(id);
+		EstadoRespuesta respuesta = MaquinaRead(id);
 		
 		mv.addObject("name","Detalle de Maquinas");
-		mv.addObject("maquina",maquina);
+		mv.addObject("maquina",respuesta.getResponse());
 		
 		return mv;
 	}

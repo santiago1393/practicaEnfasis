@@ -28,70 +28,38 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 	
 
 
-	public EstadoRespuesta metodoCreate( Maquina maquina) {
-		EstadoRespuesta respuesta = new EstadoRespuesta("error");
-		try {
-			Session session = sessionFactory.getCurrentSession();		
-			session.save(maquina);
-			session.flush();
-			respuesta.setStatus("success");
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		return respuesta;
+	public void metodoCreate( Maquina maquina) {		
+		Session session = sessionFactory.getCurrentSession();		
+		session.save(maquina);
+		session.flush();			
 	}
 
 	public Maquina metodoRead(Long id) {
 		Maquina maquina = null;
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			maquina = (Maquina) session.get(Maquina.class, id);
-		} catch (Exception e) {
-			e.getMessage();
-		}
+		Session session = sessionFactory.getCurrentSession();
+		maquina = (Maquina) session.get(Maquina.class, id);		
 		return maquina;
 	}
 
-	public EstadoRespuesta metodoUpdate(Maquina maquina) {
-		EstadoRespuesta respuesta = new EstadoRespuesta("error");
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			session.update(maquina);
-			session.flush();
-			respuesta.setStatus("success");
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		return respuesta;
+	public void metodoUpdate(Maquina maquina) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(maquina);
+		session.flush();			
 	}
 
-	public EstadoRespuesta metodoDelete(Long id) {
-		EstadoRespuesta respuesta = new EstadoRespuesta("error");
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			Maquina maquina = (Maquina) session.get(Maquina.class, id);
-			session.delete(maquina);
-			session.flush();
-			respuesta.setStatus("succes");
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		return respuesta;
+	public void metodoDelete(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		Maquina maquina = (Maquina) session.get(Maquina.class, id);
+		session.delete(maquina);
+		session.flush();		
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Maquina> metodoList() {
 		List<Maquina> listMaquinas = null;
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			Query query = session.createQuery("FROM Maquina");
-			
-			
-			listMaquinas = (List<Maquina>) query.list();		
-			System.out.println(listMaquinas.get(0).getNombre());
-		} catch (Exception e) {
-			e.getMessage();
-		}	
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("FROM Maquina");
+		listMaquinas = (List<Maquina>) query.list();		
 		return listMaquinas;
 	}
 

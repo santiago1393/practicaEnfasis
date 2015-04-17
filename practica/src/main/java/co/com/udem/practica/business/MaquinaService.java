@@ -8,9 +8,9 @@ import co.com.udem.practica.domain.Maquina;
 public interface MaquinaService {
 	
 	public EstadoRespuesta metodoCreate( Maquina maquina);
-	public Maquina metodoRead(Long id);
+	public EstadoRespuesta metodoRead(Long id);
 	public EstadoRespuesta metodoUpdate(Maquina maquina);
 	public EstadoRespuesta metodoDelete(Long id);
-	public List<Maquina> metodoList();
+	public EstadoRespuesta metodoList();
 
 }

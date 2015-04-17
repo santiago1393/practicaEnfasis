@@ -8,10 +8,10 @@ import co.com.udem.practica.domain.Maquina;
 
 public interface MaquinaDAO {
 	
-	public EstadoRespuesta metodoCreate( Maquina maquina);
+	public void metodoCreate( Maquina maquina);
 	public Maquina metodoRead(Long id);
-	public EstadoRespuesta metodoUpdate(Maquina maquina);
-	public EstadoRespuesta metodoDelete(Long id);
+	public void metodoUpdate(Maquina maquina);
+	public void metodoDelete(Long id);
 	public List<Maquina> metodoList();
 
 }
