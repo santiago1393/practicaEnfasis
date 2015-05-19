@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 import co.com.udem.practica.DAO.MaquinaDAO;
 import co.com.udem.practica.DTO.EstadoRespuesta;
 import co.com.udem.practica.domain.Maquina;
@@ -60,6 +61,16 @@ public class MaquinaDAOImpl implements MaquinaDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("FROM Maquina where disponibilidad=:disp");
 		query.setParameter("disp", true);
+		listMaquinas = (List<Maquina>) query.list();		
+		return listMaquinas;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Maquina> metodoListBusqueda(String busqueda){
+		List<Maquina> listMaquinas = null;
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("FROM Maquina where nombre like :busqueda or descripcion like :busqueda");
+		query.setParameter("busqueda", "%"+busqueda+"%");
 		listMaquinas = (List<Maquina>) query.list();		
 		return listMaquinas;
 	}

@@ -12,5 +12,6 @@ public interface MaquinaService {
 	public EstadoRespuesta metodoUpdate(Maquina maquina);
 	public EstadoRespuesta metodoDelete(Long id);
 	public EstadoRespuesta metodoList();
+	public EstadoRespuesta metodoListBusqueda(String busqueda);
 
 }

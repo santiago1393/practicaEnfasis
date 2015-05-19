@@ -120,5 +120,37 @@ public class MaquinaServiceImpl implements MaquinaService {
 		return respuesta;
 		
 	}
+	
+	@Transactional
+	public EstadoRespuesta metodoListBusqueda(String busqueda) {
+		List<MaquinaDTO> maquinasDTO = new ArrayList<MaquinaDTO>();	
+		List<Maquina> maquinas = maquinaDAO.metodoListBusqueda(busqueda);
+		
+		try {
+		
+		
+		for (Maquina maquina : maquinas) {
+			Long id = maquina.getId();
+			String descripcion = maquina.getDescripcion();
+			double descuento = maquina.getDescuento();
+			String imagen = maquina.getImagen();
+			boolean disponibilidad = maquina.isDisponibilidad();
+			String nombre = maquina.getNombre();
+			double precio = maquina.getPrecio();
+			double precioDescuento = maquina.getPrecioDescuento();
+			maquinasDTO.add(new MaquinaDTO(id,nombre,descripcion, disponibilidad,precio,descuento,imagen,precioDescuento));
+		}
+			respuesta.setStatus("success");
+			respuesta.setResponse(maquinasDTO);
+		
+		} catch (Exception e) {
+
+			respuesta.setStatus("error");
+			respuesta.setResponse(null);
+		}
+		return respuesta;
+		
+	}
+
 
 }

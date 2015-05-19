@@ -3,6 +3,8 @@ package co.com.udem.practica.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
@@ -31,14 +33,31 @@ public class MaquinasController {
 
 	@Autowired
 	public MaquinaService maquinaService;
-	
-	@RequestMapping("/list")
-	public @ResponseBody EstadoRespuesta MaquinaList(){
 		
-		EstadoRespuesta respuesta = maquinaService.metodoList();
+	
+	@RequestMapping("/listBusqueda")
+	public @ResponseBody EstadoRespuesta MaquinaListBusqueda(String busqueda, HttpServletResponse response)
+	{
+		   response.setHeader("Access-Control-Allow-Origin", "*");
+           response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+           response.setHeader("Access-Control-Max-Age", "3600");
+           response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+           EstadoRespuesta respuesta = maquinaService.metodoListBusqueda(busqueda);
 		return respuesta;
+		
 	}
 	
+	@RequestMapping("/list")
+	public @ResponseBody EstadoRespuesta MaquinaList(HttpServletResponse response){
+		
+		   response.setHeader("Access-Control-Allow-Origin", "*");
+           response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+           response.setHeader("Access-Control-Max-Age", "3600");
+           response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+           EstadoRespuesta respuesta = maquinaService.metodoList();
+			return respuesta;
+	}
+		
 	@RequestMapping("/create")
 	public @ResponseBody EstadoRespuesta MaquinaCreate(@RequestParam(value = "nombre", required = false, defaultValue = "HOMECENTER") String nombre,@RequestParam(value = "descripcion", required = false, defaultValue = "HOMECENTER") String descripcion, @RequestParam(value = "precio", required = false, defaultValue = "0") double precio, @RequestParam(value = "descuento", required = false, defaultValue = "0") double descuento,@RequestParam(value = "disponibilidad", required = false, defaultValue = "true") boolean disponibilidad){
 		return  maquinaService.metodoCreate(new Maquina(nombre,descripcion,disponibilidad,precio,descuento,""));
@@ -63,14 +82,13 @@ public class MaquinasController {
 		EstadoRespuesta respuesta = maquinaService.metodoUpdate(maquina);
 		return respuesta;
 	}
-
 	
 	// ESTE METODO MAPEA LA VISTA GENERAL DE LAS MAQUINAS
 	@RequestMapping("/maquinas")
 	public ModelAndView getMaquinasList()
 	{
 		ModelAndView mv = new ModelAndView();
-		EstadoRespuesta respuesta = MaquinaList();		
+		EstadoRespuesta respuesta = MaquinaList(null);		
 		mv.addObject("name","Lista de Maquinas");
 		mv.addObject("lista",respuesta.getResponse());
 		

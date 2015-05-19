@@ -13,5 +13,6 @@ public interface MaquinaDAO {
 	public void metodoUpdate(Maquina maquina);
 	public void metodoDelete(Long id);
 	public List<Maquina> metodoList();
+	public List<Maquina> metodoListBusqueda(String busqueda);
 
 }
