@@ -41,6 +41,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 		try {
 			Maquina maquina = maquinaDAO.metodoRead(id);
 			MaquinaDTO maquinaDTO = new MaquinaDTO();
+			maquinaDTO.setId(maquina.getId());
 			maquinaDTO.setDescripcion(maquina.getDescripcion());
 			maquinaDTO.setDescuento(maquina.getDescuento());
 			maquinaDTO.setDisponibilidad(maquina.isDisponibilidad());

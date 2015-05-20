@@ -71,7 +71,11 @@ public class MaquinasController {
 	}
 	
 	@RequestMapping("/read")
-	public @ResponseBody EstadoRespuesta MaquinaRead(@RequestParam(value = "id", required = false, defaultValue = "0") Long id){
+	public @ResponseBody EstadoRespuesta MaquinaRead(HttpServletResponse response,@RequestParam(value = "id", required = false, defaultValue = "0") Long id){
+		   response.setHeader("Access-Control-Allow-Origin", "*");
+           response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+           response.setHeader("Access-Control-Max-Age", "3600");
+           response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
 		return maquinaService.metodoRead(id);	
 	}
 	
@@ -100,7 +104,7 @@ public class MaquinasController {
 	public ModelAndView getMaquinaDetalle(@RequestParam(value = "id", required = false, defaultValue = "1") Long id)
 	{
 		ModelAndView mv = new ModelAndView();
-		EstadoRespuesta respuesta = MaquinaRead(id);
+		EstadoRespuesta respuesta = MaquinaRead(null,id);
 		
 		mv.addObject("name","Detalle de Maquinas");
 		mv.addObject("maquina",respuesta.getResponse().get(0));
