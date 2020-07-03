@@ -8,7 +8,7 @@
   <name>practica Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
-	<org.springframework.version>4.0.3.RELEASE</org.springframework.version>
+	<org.springframework.version>5.2.7.RELEASE</org.springframework.version>
 	<jackson.version>1.9.10</jackson.version>	
   	<hibernate.version>4.3.4.Final</hibernate.version>
   	<mysql.version>8.0.16</mysql.version>  
